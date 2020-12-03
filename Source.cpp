@@ -87,7 +87,7 @@ void displayData(const vector<Highscore>& scores)
 
 vector<Highscore>::iterator indexOfLargest(const vector<Highscore>& constScores, vector<Highscore>::iterator startingIndex)
 {
-    int targetIndex = startingIndex;
+    vector<Highscore>::iterator targetIndex = startingIndex;
 
     for (vector<Highscore>::iterator count = scores.begin(); count != scores.end(); count++)
         if (highScores->count.score > highScores->targetIndex.score) {
