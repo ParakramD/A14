@@ -39,7 +39,9 @@ int main()
 
 int getArraySize(vector<int>::size_type currentSize) 
 {
-    return size;
+    cout << "How many scores will you enter?: ";
+    cin >> size;
+    cin.ignore();
 }
 
 
