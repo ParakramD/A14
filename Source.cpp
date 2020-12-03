@@ -16,7 +16,7 @@ int getArraySize(vector<int>::size_type currentSize);
 void readData(vector<Highscore>& scores);
 void sortData(vector<Highscore>& scores);
 void displayData(const vector<Highscore>& scores);
-int indexOfLargest(const vector<Highscore>& scores, int startingIndex);
+vector<Highscore>::iterator indexOfLargest(const vector<Highscore>& constScores, vector<Highscore>::iterator startingIndex);
 
 int main()
 {
@@ -29,8 +29,6 @@ int main()
     readData(highScores);
     sortData(highScores);
     displayData(highScores);
-
-    delete[] highScores;
 }
 
 
@@ -50,7 +48,7 @@ int getArraySize(vector<int>::size_type currentSize)
 
 void readData(vector<Highscore>& scores)
 {
-    for (vector<int>::iterator i = scores.begin(); i != scores.end(); i++)
+    for (vector<Highscore>::iterator i = scores.begin(); i != scores.end(); i++)
     {
         cout << "Enter the name for score #" << (i + 1) << ": ";
         cin >> i->name;
@@ -67,7 +65,7 @@ void sortData(vector<Highscore>& scores)
     int largestIndex;
     Highscore tempRecord;
 
-    for (vector<int>::iterator count = scores.begin(); count != scores.end(); count++)
+    for (vector<Highscore>::iterator count = scores.begin(); count != scores.end(); count++)
     {
         largestIndex = indexOfLargest(highScores, count);
         tempRecord = highScores->largestIndex;
@@ -78,7 +76,7 @@ void sortData(vector<Highscore>& scores)
 void displayData(const vector<Highscore>& scores)
 {
     cout << "Top Scorers: " << endl;
-    for (vector<int>::iterator index = scores.begin(); index != scores.end(); index++)
+    for (vector<Highscore>::iterator index = scores.begin(); index != scores.end(); index++)
     {
         cout << *i->name << ": " << *i->score << endl;
     }
@@ -87,11 +85,11 @@ void displayData(const vector<Highscore>& scores)
 
 
 
-int indexOfLargest(const Highscore highScores[], int startingIndex)
+vector<Highscore>::iterator indexOfLargest(const vector<Highscore>& constScores, vector<Highscore>::iterator startingIndex)
 {
     int targetIndex = startingIndex;
 
-    for (int count = startingIndex + 1; count < size; count++) {
+    for (vector<Highscore>::iterator count = scores.begin(); count != scores.end(); count++)
         if (highScores->count.score > highScores->targetIndex.score) {
             targetIndex = count;
         }
