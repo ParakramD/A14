@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+#include <vector>
+
 using namespace std;
 
 const int MAX_NAMESIZE = 24;
@@ -20,7 +22,8 @@ vector<Highscore>::iterator indexOfLargest(const vector<Highscore>& constScores,
 
 int main()
 {
-    vector<int>::size_type size;
+    int size;
+
     getArraySize(size);
 
     vector<Highscore>highScores(size);
@@ -34,7 +37,7 @@ int main()
 
 
 
-void getArraySize(vector<int>::size_type currentSize) 
+void getArraySize(vector<int>::size_type currentSize)
 {
     cout << "How many scores will you enter?: ";
     cin >> size;
@@ -47,14 +50,14 @@ void getArraySize(vector<int>::size_type currentSize)
 
 void readData(vector<Highscore>& scores)
 {
-    for (vector<Highscore>::iterator i = scores.begin(); i != scores.end(); i++)
+    for (vector<Highscore>::iterator index = scores.begin(); index != scores.end(); index++)
     {
-        cout << "Enter the name for score #" << (i + 1) << ": ";
-        cin >> i->name;
-        cin.ignore;
+        cout << "Enter the name for score #" << *index + 1 << ": ";
+        cin >> index -> name;
+        cin.ignore();
 
-        cout << "Enter the score" << (i + 1) << ": ";
-        cin >> i->scores;
+        cout << "Enter the score" << *index + 1 << ": ";
+        cin >> index -> scores;
         cin.ignore();
     }
     cout << endl;
@@ -67,29 +70,31 @@ void sortData(vector<Highscore>& scores)
     for (vector<Highscore>::iterator count = scores.begin(); count != scores.end(); count++)
     {
         largestIndex = indexOfLargest(highScores, count);
-        tempRecord = highScores->largestIndex;
-        highScores->largestIndex = highScores->count;
+        tempRecord = highScores.largestIndex;
+        highScores->largestIndex = highScores.count;
         highScores->count = tempRecord;
     }
 }
 void displayData(const vector<Highscore>& scores)
 {
     cout << "Top Scorers: " << endl;
-    for (vector<Highscore>::iterator index = scores.begin(); index != scores.end(); index++)
+    for (vector<Highscore>::const_iterator index = scores.begin(); index != scores.end(); index++)
     {
-        cout << *i->name << ": " << *i->score << endl;
+        cout << *index->name << ": " << index->scores << endl;
     }
 }
 
 
 
 
-vector<Highscore>::iterator indexOfLargest(const vector<Highscore>& constScores, vector<Highscore>::iterator startingIndex)
+vector<Highscore>::iterator indexOfLargest(const vector<Highscore>& scores, vector<Highscore>::iterator startingIndex)
 {
     vector<Highscore>::iterator targetIndex = startingIndex;
 
-    for (vector<Highscore>::iterator count = scores.begin(); count != scores.end(); count++)
-        if (highScores->count.score > highScores->targetIndex.score) {
+    for (vector<Highscore>::const_iterator count = scores.begin(); count != scores.end(); count++)
+    {
+        if (highScores(count.scores) > highScores(targetIndex.scores))
+        {
             targetIndex = count;
         }
     }
