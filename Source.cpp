@@ -20,8 +20,7 @@ vector<Highscore>::iterator indexOfLargest(const vector<Highscore>& constScores,
 
 int main()
 {
-    int size;
-
+    vector<int>::size_type size;
     getArraySize(size);
 
     vector<Highscore>highScores(size);
