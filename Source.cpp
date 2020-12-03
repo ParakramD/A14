@@ -12,7 +12,7 @@ struct Highscore
     int scores;
 };
 
-int getArraySize(vector<int>::size_type currentSize);
+void getArraySize(vector<int>::size_type currentSize);
 void readData(vector<Highscore>& scores);
 void sortData(vector<Highscore>& scores);
 void displayData(const vector<Highscore>& scores);
@@ -34,7 +34,7 @@ int main()
 
 
 
-int getArraySize(vector<int>::size_type currentSize) 
+void getArraySize(vector<int>::size_type currentSize) 
 {
     cout << "How many scores will you enter?: ";
     cin >> size;
