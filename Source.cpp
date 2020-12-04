@@ -18,7 +18,7 @@ void getArraySize(vector<int>::size_type currentSize);
 void readData(vector<Highscore>& scores);
 void sortData(vector<Highscore>& scores);
 void displayData(const vector<Highscore>& scores);
-vector<Highscore>::iterator indexOfLargest(const vector<Highscore>& constScores, vector<Highscore>::iterator startingIndex);
+vector<Highscore>::iterator indexOfLargest(const vector<Highscore>& const Scores, vector<Highscore>::iterator startingIndex);
 
 int main()
 {
@@ -37,7 +37,7 @@ int main()
 
 
 
-void getArraySize(vector<int>::size_type currentSize)
+void getArraySize(vector<int>::size_type& size)
 {
     cout << "How many scores will you enter?: ";
     cin >> size;
@@ -52,11 +52,11 @@ void readData(vector<Highscore>& scores)
 {
     for (vector<Highscore>::iterator index = scores.begin(); index != scores.end(); index++)
     {
-        cout << "Enter the name for score #" << *index + 1 << ": ";
+        cout << "Enter the name for score #" << (index + 1) << ": ";
         cin >> index -> name;
         cin.ignore();
 
-        cout << "Enter the score" << *index + 1 << ": ";
+        cout << "Enter the score" << index + 1 << ": ";
         cin >> index -> scores;
         cin.ignore();
     }
@@ -71,8 +71,8 @@ void sortData(vector<Highscore>& scores)
     {
         largestIndex = indexOfLargest(highScores, count);
         tempRecord = highScores.largestIndex;
-        highScores->largestIndex = highScores.count;
-        highScores->count = tempRecord;
+        highScores.largestIndex = highScores.count;
+        highScores.count = tempRecord;
     }
 }
 void displayData(const vector<Highscore>& scores)
@@ -87,13 +87,13 @@ void displayData(const vector<Highscore>& scores)
 
 
 
-vector<Highscore>::iterator indexOfLargest(const vector<Highscore>& scores, vector<Highscore>::iterator startingIndex)
+vector<Highscore>::iterator indexOfLargest(vector<Highscore>& highScores, vector<Highscore>::iterator startingIndex)
 {
     vector<Highscore>::iterator targetIndex = startingIndex;
 
-    for (vector<Highscore>::const_iterator count = scores.begin(); count != scores.end(); count++)
+    for (vector<Highscore>::iterator count = scores.begin(); count != scores.end(); count++)
     {
-        if (highScores(count.scores) > highScores(targetIndex.scores))
+        if (highScores.count -> scores > highScores.targetIndex -> scores)
         {
             targetIndex = count;
         }
